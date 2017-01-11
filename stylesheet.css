@@ -1,0 +1,19 @@
+div.game_box {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+div.map {
+	margin: auto;
+	height: 500px;
+	width: 685px;
+	background-image: url(./asiapics/asia_685x500.png);
+}
+
+div.button_box {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
