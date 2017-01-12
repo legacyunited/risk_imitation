@@ -2,8 +2,8 @@
 <div class="map">{% include "country_divs.html" %}</div>
 <div class="button_box">
 	<button type="button" id="undo">Undo</button>
-	<button type="button" id="high_scores">Show High Scores</button>
-	<button type="button" id="authenticate">Log in / Log out</button>
-	<button type="button" id="new_game">New Game</button>
+	<button type="button" onclick="show_high_scores()">Show High Scores</button>
+	<button type="button" onclick="log_in(false)">Log in / Log out</button>
+	<button type="button" onclick="new_game(false)">New Game</button>
 </div>
 {% include "bottom.html" %}
