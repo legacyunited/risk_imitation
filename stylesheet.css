@@ -1,8 +1,15 @@
-div.game_box {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	align-items: center;
+body {
+	background-color: #FFFBD0;
+}
+
+div.container {
+	display: block;
+	min-width: 690px;
+	max-width: 800px;
+	margin: auto;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: #CC6600;
 }
 
 div.map {
@@ -10,10 +17,19 @@ div.map {
 	height: 500px;
 	width: 685px;
 	background-image: url(./asiapics/asia_685x500.png);
+	margin-bottom: 1em;
 }
 
 div.button_box {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+}
+
+button {
+	background-color: #FFFBD0;
+	width: 20%;
+	margin: auto;
+	height: 3em;
+	border-radius: 10px;
 }
