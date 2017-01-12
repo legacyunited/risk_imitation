@@ -1,18 +1,72 @@
-.afganistan {}
-.bangladesh {
+
+.afganistan {
+	position: absolute;
+	left: 260px;
+	top: 402px;
 }
-.bhutan {}
-.burma {}
-.cambodia {}
-.central_stans {}
-.delhi {}
-.east_central_siberia {}
-.east_indonesia {}
-.east_siberia {}
-.georgia {}
-.hong_kong {}
-.iran {}
-.iraq {}
+.bangladesh {
+	position: absolute;
+	left: 521px;
+	top: 538px;
+}
+.bhutan {
+	position: absolute;
+	left: 527px;
+	top: 516px;
+}
+.burma {
+	position: absolute;
+	left: 558px;
+	top: 515px;
+}
+.cambodia {
+	position: absolute;
+	left: 660px;
+	top: 670px;
+}
+.central_stans {
+	position: absolute;
+	left: 232px;
+	top: 315px;
+}
+.delhi {
+	position: absolute;
+	left: 412px;
+	top: 515px;
+}
+.east_central_siberia {
+	position: absolute;
+	left: 532px;
+	top: -15px;
+}
+.east_indonesia {
+	position: absolute;
+	left: 800px;
+	top: 817px;
+}
+.east_siberia {
+
+}
+.georgia {
+	position: absolute;
+	left: 101px;
+	top: 345px;
+}
+.hong_kong {
+	position: absolute;
+	left: 787px;
+	top: 533px;
+}
+.iran {
+	position: absolute;
+	left: 123px;
+	top: 390px;
+}
+.iraq {
+	position: absolute;
+	left: 60px;
+	top: 416px;
+}
 .israel_palestine {}
 .jammu_kashmir {}
 .jordan {}
