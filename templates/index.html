@@ -1,4 +1,5 @@
-{% include "top.html" %}
+{% extends "basic.html" %}
+{% block content %}
 <div class="map">{% include "country_divs.html" %}</div>
 <div class="button_box">
 	<button type="button" id="undo">Undo</button>
@@ -6,4 +7,4 @@
 	<button type="button" onclick="log_in(false)">Log in / Log out</button>
 	<button type="button" onclick="new_game(false)">New Game</button>
 </div>
-{% include "bottom.html" %}
+{% endblock %}
