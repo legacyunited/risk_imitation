@@ -1,3 +1,3 @@
-{% for country in country_array %}
-	<div class="{{country.name}}"><p style = {{country.owned_by}}>{{country.troop_number}}</p></div>
+{% for country in countries %}
+	<div class="{{country.name}}"><p style = {{country.country_name}}>{{country.troops}}</p></div>
 {% endfor %}
