@@ -1,13 +1,8 @@
 from flask import Flask, request, render_template
+from controller.country import Country
 
 app = Flask(__name__)
 app.debug = True
-
-class Country:
-	def __init__(self, country):
-		self.country_name = country
-		self.troops = 0
-
 
 @app.route('/')
 def home():
