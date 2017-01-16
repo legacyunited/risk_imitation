@@ -27,15 +27,18 @@ north_china
 northeast_china
 northeast_india
 north_japan
-north_korea
+best_korea
 northwest_china
 okinawa
 oman
+orissa
 pakistan
+philippines
 rajasthan
 saudi_arabia
 south_china
 south_india
+south_korea
 sri_lanka
 syria
 taiwan
@@ -45,6 +48,7 @@ tibet
 turkey
 turmenistan
 uae
+uzbekistan
 vietnam
 west_central_siberia
 west_indonesia
