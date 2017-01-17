@@ -35,7 +35,7 @@ class Country:
 			return sorted(highest)
 
 		def list_of_rules_from_high_to_low(type_of_attack):
-			if type_of_attack=="defensive"
+			if type_of_attack=="defensive":
 				if defending_country.troops >= 3:
 					roll(3)
 				elif defending_country.troops == 2:
@@ -43,7 +43,7 @@ class Country:
 				else:
 					roll(1)
 
-			if type_of_attack=="offensive"
+			if type_of_attack=="offensive":
 				if defending_country.troops >= 4:
 					roll(3)
 				elif defending_country.troops == 3:
@@ -52,16 +52,23 @@ class Country:
 					roll(1)
 
 
-		while self.troops > 1 and defending_country.troops >= 1 {
+		while self.troops > 1 and defending_country.troops > 0:
 			defense = list_of_rolls_from_high_to_low("defensive")
 			offense = list_of_rolls_from_high_to_low("offensive")
 
-			if defense > offense:
-				self.troops -= 1
 
-			if offense > defense:
+			for each in range(3):
+				if offense > defense:
+					defending_country.troops -= 1
+				elif defense > offense:
+					self.troops -= 1
 
+		if defending_country.troops == 0:
+			defending_country.owned_by(self.owned_by)
+			Game.successful_attack = True
+			for troop in offense:
+				if troop != 0:
+					self.troops -= 1
+					defending_country += 1
 
-
-		}
 	}
