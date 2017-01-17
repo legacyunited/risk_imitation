@@ -24,11 +24,11 @@ mongolia
 mumbai
 nepal
 north_china
+north_japan
 northeast_china
 northeast_india
-north_japan
-best_korea
 northwest_china
+best_korea
 okinawa
 oman
 orissa
