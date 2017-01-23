@@ -16,9 +16,10 @@ class Country:
 		"central asia": 6
 	}
 
-	def __init__(self, country):
+	def __init__(self, country, owned_by):
 		self.name = country
 		self.troops = 0
+		self.owned_by = owned_by
 
 
 	def attack(defending_country):
