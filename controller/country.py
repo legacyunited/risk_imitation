@@ -1,18 +1,18 @@
 class Country:
 
 	AREAS = {
-		"east asia": ["mainland_japan", "okinawa", "best_korea", "south_korea", "north_china", "northeast_china", "south_china", "hong_kong", "taiwan"]
-		"southeast asia": ["cambodia", "thailand", "burma", "laos", "vietnam", "philippines", "malaysia", "west_indonesia", "east_indonesia"]
-		"south asia": ["northeast_india", "bangladesh", "bhutan", "nepal", "tibet", "delhi", "orissa", "rajasthan", "mumbai", "south_india", "tamil_nadu", "sri_lanka", "pakistan"]
-		"middle east": ["afghanistan", "iran", "iraq", "central_stans", "turkey", "syria", "israel_palestine", "jordan", "saudi_arabia", "oman", "kuwait", "uae", "yeman"]
+		"east asia": ["mainland_japan", "okinawa", "best_korea", "south_korea", "north_china", "northeast_china", "south_china", "hong_kong", "taiwan"],
+		"southeast asia": ["cambodia", "thailand", "burma", "laos", "vietnam", "philippines", "malaysia", "west_indonesia", "east_indonesia"],
+		"south asia": ["northeast_india", "bangladesh", "bhutan", "nepal", "tibet", "delhi", "orissa", "rajasthan", "mumbai", "south_india", "tamil_nadu", "sri_lanka", "pakistan"],
+		"middle east": ["afghanistan", "iran", "iraq", "central_stans", "turkey", "syria", "israel_palestine", "jordan", "saudi_arabia", "oman", "kuwait", "uae", "yeman"],
 		"central asia": ["turmenistan", "uzbekistan", "kazakhstan", "northwest", "west_siberia", "west_central_siberia", "east_central_siberia", "east_siberia"]
 	}
 
 	AREA_VALUES = {
-		"east asia": 7
-		"southeast asia": 4
-		"south asia": 5
-		"middle east": 4
+		"east asia": 7,
+		"southeast asia": 4,
+		"south asia": 5,
+		"middle east": 4,
 		"central asia": 6
 	}
 
@@ -21,10 +21,10 @@ class Country:
 		self.troops = 0
 
 
-	def attack(defending_country) {
+	def attack(defending_country):
 		def roll(number_of_rolls):
 			highest = []
-			for roll in range(number_of_rolls)
+			for roll in range(number_of_rolls):
 					value = Game.roll_die()
 
 					highest.append(defensive_value)
@@ -48,7 +48,7 @@ class Country:
 					roll(3)
 				elif defending_country.troops == 3:
 					roll(2)
-				elif == 2:
+				elif defending_country.troops == 2:
 					roll(1)
 
 
@@ -70,5 +70,3 @@ class Country:
 				if troop != 0:
 					self.troops -= 1
 					defending_country += 1
-
-	}
