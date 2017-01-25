@@ -1,24 +1,29 @@
 from flask import Flask, request, render_template
+from random import Random
 from controller.country import Country
+from controller.player import Player
+from controller.game import Game
+
 
 app = Flask(__name__)
 app.debug = True
 
 @app.route('/')
 def home():
-	logged_in = False
+	logged_in = True #True for debugging
 	
 	if not logged_in:
 		result = []
 		with open("countries.txt", "r") as file:
 			for line in file:
 				country = line.rstrip()
-				result.append(Country(country))
+				result.append(Country(country, 0))
 
 		return render_template("index.html", countries=result)
 
 	else:
-		return render_template("index.html", Game(User.name))
+		new_game = Game(4, "Fred")
+		return render_template("index.html", game=new_game)
 
 
 @app.route('/new_game/', methods=["POST", "GET"])

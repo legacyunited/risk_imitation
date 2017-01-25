@@ -8,7 +8,6 @@ delhi
 east_central_siberia
 east_indonesia
 east_siberia
-georgia
 hong_kong
 iran
 iraq

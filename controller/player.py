@@ -6,16 +6,17 @@ class Player:
 
 		#The players identifier AND the order they play in
 		self.player_num = player_num
+		
 		self.RISK_cards = 0
 		self.number_of_territories_owned
 
 	def check_if_play_owns_area(area):
 		player_owns_country = []
-			for country in area:
-				if country.owned_by == self.player_num:
-					player_owns_country.append(True)
-				else:
-					player_owns_country.append(False)
+		for country in area:
+			if country.owned_by == self.player_num:
+				player_owns_country.append(True)
+			else:
+				player_owns_country.append(False)
 
 		return all(player_owns_country)
 
