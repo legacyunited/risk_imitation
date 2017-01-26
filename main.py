@@ -1,7 +1,5 @@
 from flask import Flask, request, render_template
-from random import Random
-from controller.country import Country
-from controller.player import Player
+from random import random
 from controller.game import Game
 
 
@@ -22,8 +20,9 @@ def home():
 		return render_template("index.html", countries=result)
 
 	else:
-		new_game = Game(4, "Fred")
-		return render_template("index.html", game=new_game)
+		game = Game(4, 1, "Fred").setup_game()
+
+		return render_template("index.html", countries=game.countries)
 
 
 @app.route('/new_game/', methods=["POST", "GET"])

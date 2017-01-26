@@ -16,13 +16,12 @@ class Country:
 		"central asia": 6
 	}
 
-	def __init__(self, country, owned_by):
+	def __init__(self, country):
 		self.name = country
 		self.troops = 0
-		self.owned_by = owned_by
 
 
-	def attack(defending_country):
+	def attack(self, defending_country):
 		def roll(number_of_rolls):
 			highest = []
 			for roll in range(number_of_rolls):

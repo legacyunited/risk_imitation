@@ -1,6 +1,6 @@
 class Player:
 
-	def __init__(is_user_player, player_num, countries_owned):
+	def __init__(self, is_user_player, player_num):
 		#True if player is a user instead of an AI
 		self.is_user_player = is_user_player
 
@@ -8,9 +8,8 @@ class Player:
 		self.player_num = player_num
 		
 		self.RISK_cards = 0
-		self.number_of_territories_owned
 
-	def check_if_play_owns_area(area):
+	def check_if_play_owns_area(self, area):
 		player_owns_country = []
 		for country in area:
 			if country.owned_by == self.player_num:
@@ -20,7 +19,7 @@ class Player:
 
 		return all(player_owns_country)
 
-	def count_troops_to_distribute():
+	def count_troops_to_distribute(self):
 		troops = floor(self.number_of_territories_owned/3.0)
 
 		if RISK_cards >= 3:
