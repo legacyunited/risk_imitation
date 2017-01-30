@@ -38,15 +38,14 @@ class Game:
 
 	def setup_game(self):
 		#gets a list of all countries
-		all_countries = []
+		self.countries = []
 		with open("countries.txt", "r") as file:
 			for line in file:
 				country = line.rstrip()
-				all_countries.append(Country(country))
+				self.countries.append(Country(country))
 
 
 		#assigns each player to a random country
-		self.countries = all_countries
 		current_player = 0
 		for country in self.countries:
 			if current_player == (self.number_of_players - 1):

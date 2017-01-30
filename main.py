@@ -20,7 +20,8 @@ def home():
 		return render_template("index.html", countries=result)
 
 	else:
-		game = Game(4, 1, "Fred").setup_game()
+		game = Game(4, 1, "Fred")
+		game.setup_game()
 
 		return render_template("index.html", countries=game.countries)
 
