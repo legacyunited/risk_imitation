@@ -85,7 +85,7 @@ def create_new_user():
 
 				#Successfully inserted, go to new game page
 				session["user"] = request.form["user_name"]
-				flash("Username/password inserted into userbase. " + str(session["user"])
+				flash("Username/password inserted into userbase. " + str(session["user"]))
 				return redirect(url_for('new_game'))
 
 			else:
