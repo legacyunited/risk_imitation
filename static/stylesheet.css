@@ -33,3 +33,20 @@ button {
 	height: 3em;
 	border-radius: 10px;
 }
+
+
+/* Log in and new user page */
+
+.log_in {
+	width: 50%;
+	float: left;
+	height: 100%;
+	text-align: center;
+}
+
+.new_user {
+	width: 50%;
+	float: right;
+	height: 100%;
+	text-align: center;
+}
