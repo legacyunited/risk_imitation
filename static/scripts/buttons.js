@@ -11,7 +11,7 @@ function log_in(logged_in) {
 }
 
 function show_high_scores() {
-	window.location.href='high_scores'
+	window.location.href='/high_scores'
 }
 
 function new_game(logged_in) {

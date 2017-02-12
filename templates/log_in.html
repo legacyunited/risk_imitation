@@ -1,0 +1,12 @@
+{% extends "basic.html" %}
+{% block content %}
+	<form action="/log_in/" method="POST">
+		<p>Please log in: </p><br>
+		Username: <input type="text_box" name="user_name">
+		Password: <input type="text_box" name="user_password">
+		<br>
+		<input type="submit" value="Submit">
+		<br>
+	</form>
+
+{% endblock %}
