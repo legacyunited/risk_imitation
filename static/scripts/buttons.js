@@ -16,14 +16,11 @@ function show_high_scores() {
 
 function go_to_new_game(logged_in) {
 	if (logged_in) {
-		confirmation = confirm("Are you sure you want to make a new game? Your current game and your progress will be lost.")
-			if(confirmation) {
-				window.location = "/new_game/"
-			}
+		window.location = "/new_game/"
 	}
 	else {
 		alert("To start a new game, you must first log in. Press the Log in / Log out button.")
-	}
+	} 
 }
 
 function go_back() {
