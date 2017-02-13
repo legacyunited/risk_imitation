@@ -1,11 +1,20 @@
 {% extends "basic.html" %}
 {% block content %}
-<form action="/new_game/" method="PUSH">
-	<p>Choose your color: </p><br>
-	<input type="radio" name="color" value="blue" checked>Blue
-	<input type="radio" name="color" value="red">Red
-	<input type="radio" name="color" value="green">Blue
-	<input type="radio" name="color" value="tan">Tan
-	<br>
+<script src = "{{ url_for('static', filename='scripts/new_game_settings.js')}}"></script>
+
+<form action="/new_game/">
+	<p>How many players are playing?</p><br>
+	<input type="radio" name="color" value="2" id="check2" checked onchange="is_checked();">2
+	<input type="radio" name="color" value="3" id="check3" onchange="is_checked();">3
+	<input type="radio" name="color" value="4" id="check4" onchange="is_checked();">4
 </form>
+<br><br><br>
+<form action="/new_game/" method="PUSH">
+	<input type='text' value="User 2's username">
+	<input type='text' value="User 3's username" id="three_form">
+	<input type='text' value="User 4's username" id="four_form"><br>
+	<input type="submit" value="Submit">
+</form>
+<br>
+<script src = "{{ url_for('static', filename='scripts/new_game_settings.js')}}"></script>
 {% endblock %}

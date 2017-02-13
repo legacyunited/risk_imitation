@@ -5,7 +5,6 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css')}}">
 		<!-- Stylesheet to tell browser how to position countries -->
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='country_positioning.css')}}">
-		<script src="{{ url_for('static', filename='scripts/buttons.js')}}"></script>
 	</head>
 	<body>
 		<!-- Gets flashed messeges, displays in javascript alert -->
@@ -26,11 +25,13 @@
 				<button type="button" onclick="show_high_scores()">Show High Scores</button>
 				{% if session["user"] %}
 				<button type="button" onclick="log_in(true)">Log out</button>
+				<button type="button" onclick="go_to_new_game(true)">New Game</button>
 				{% else %}
 				<button type="button" onclick="log_in(false)">Log in</button>
+				<button type="button" onclick="go_to_new_game(false)">New Game</button>
 				{% endif %}
-				<button type="button" onclick="go_to_new_game({% if session["user"] %}true{% endif %})">New Game</button>
 			</div>
 		</div>
+		<script src="{{ url_for('static', filename='scripts/buttons.js')}}"></script>
 	</body>
 </html>
