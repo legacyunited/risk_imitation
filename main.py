@@ -37,25 +37,25 @@ def new_game():
 
 	if request.method == "POST":
 		users = [session["user"]]
-		i = 2;
-		num = int(request.form["num"]) + 1
-		print('leh')
+		i = 1;
+		num = int(request.form["num"])
 
 		while (i < num):
-			print("meh")
 			user = "user" + str(i)
+			print(user)
 			if (request.form[user] != session["user"]):
 				if (search_users(request.form[user], request.form[(user+"_password")])):
 					users.append(request.form[user])
 				else:
-					flash("Username/password combo didn't match! " + request.form[user] +"  " + request.form[(user+"_password")])
+					flash("Username "+str(i) + "and password combo not found!")
 					return redirect(url_for('new_game'))
 			else:
 				flash("You cannot play against yourself!")
 				return redirect(url_for('new_game'))
+			i += 1
 
-			flash("success")
-			return redirect(url_for('new_game'))
+		flash("success")
+		return redirect(url_for('new_game'))
 
 
 @app.route('/log_in/', methods=["POST", "GET"])
@@ -80,26 +80,30 @@ def log_in():
 
 @app.route('/create_new_user/', methods=["POST"])
 def create_new_user():
-	if request.form["user_password"] == request.form["user_password_confirm"]:
-		if not search_users(request.form["user_name"],request.form["user_password"]):
-			con = lite.connect("./model/data.db")
+	if not find_if_username_taken(request.form["user_password"]):
+		if request.form["user_password"] == request.form["user_password_confirm"]:
+			if not search_users(request.form["user_name"],request.form["user_password"]):
+				con = lite.connect("./model/data.db")
 
-			with con:
-				con.row_factory = lite.Row
-				cur = con.cursor()
-				#If it didn't find a matching combo, passes values into the table
-				cur.execute("INSERT INTO Users(name, password) VALUES(?, ?)", (request.form["user_name"], request.form["user_password"]))
+				with con:
+					con.row_factory = lite.Row
+					cur = con.cursor()
+					#If it didn't find a matching combo, passes values into the table
+					cur.execute("INSERT INTO Users(name, password) VALUES(?, ?)", (request.form["user_name"], request.form["user_password"]))
 
-			#Successfully inserted, go to new game page
-			session["user"] = request.form["user_name"]
-			flash("Username/password inserted into userbase. " + str(session["user"]))
-			return redirect(url_for('new_game'))
+				#Successfully inserted, go to new game page
+				session["user"] = request.form["user_name"]
+				flash("Username/password inserted into userbase. " + str(session["user"]))
+				return redirect(url_for('new_game'))
 
+			else:
+				flash("That username was found, please try something else.")
+				return redirect(url_for('log_in'))
 		else:
-			flash("That username was found, please try something else.")
+			flash("Passwords did not match.")
 			return redirect(url_for('log_in'))
-	else:
-		flash("Passwords did not match.")
+	else: 
+		flash("Sorry, username already exists.")
 		return redirect(url_for('log_in'))
 
 @app.route('/log_out/', methods=["GET"])
@@ -125,12 +129,32 @@ def search_users(username, password):
 		con.row_factory = lite.Row
 
 		cur = con.cursor()
-		#Finds username, if not exists, creates it
+		#Finds all usernames and passwords
 		query = cur.execute("SELECT name, password FROM Users")
 
 		#checks all the users for a matching username/password combo
 		for item in query:
 			if (username == item["name"]) and (password == item["password"]):
+				return True
+
+		#If none are found, return False
+		return False
+
+
+def find_if_username_taken(username):
+	con = lite.connect("./model/data.db")
+
+	with con:
+		#Returns queries as a dictionary
+		con.row_factory = lite.Row
+
+		cur = con.cursor()
+		#Finds all usernames
+		query = cur.execute("SELECT name FROM Users")
+
+		#checks all the users for a matching username
+		for item in query:
+			if (username == item["name"]):
 				return True
 
 		#If none are found, return False
