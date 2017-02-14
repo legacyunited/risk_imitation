@@ -1,18 +1,17 @@
 {% extends "basic.html" %}
 {% block content %}
-<script src = "{{ url_for('static', filename='scripts/new_game_settings.js')}}"></script>
-
-<form action="/new_game/">
+<form action="/new_game/" method="POST">
 	<p>How many players are playing?</p><br>
-	<input type="radio" name="color" value="2" id="check2" checked onchange="is_checked();">2
-	<input type="radio" name="color" value="3" id="check3" onchange="is_checked();">3
-	<input type="radio" name="color" value="4" id="check4" onchange="is_checked();">4
-</form>
+	<input type="radio" name="num" value="2" id="check2" checked onchange="is_checked();">2
+	<input type="radio" name="num" value="3" id="check3" onchange="is_checked();">3
+	<input type="radio" name="num" value="4" id="check4" onchange="is_checked();">4
 <br><br><br>
-<form action="/new_game/" method="PUSH">
-	<input type='text' value="User 2's username">
-	<input type='text' value="User 3's username" id="three_form">
-	<input type='text' value="User 4's username" id="four_form"><br>
+	<input type='text' name="user1" value="User 2's username" >
+	<input type='text' name="user2" value="User 3's username" class="three_form">
+	<input type='text' name="user3" value="User 4's username" class="four_form"><br>
+	<input type='password' name="user1_password">
+	<input type='password' name="user2_password" class="three_form">
+	<input type='password' name="user3_password" class="four_form"><br>
 	<input type="submit" value="Submit">
 </form>
 <br>

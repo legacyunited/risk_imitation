@@ -44,18 +44,18 @@ button {
 	text-align: center;
 }
 
-
-#three_form {
-	visibility: hidden;
-}
-
-#four_form {
-	visibility: hidden;
-}
-
 .new_user {
 	width: 50%;
 	float: right;
 	height: 100%;
 	text-align: center;
+}
+
+/* New Game Page */
+.three_form {
+	visibility: hidden;
+}
+
+.four_form {
+	visibility: hidden;
 }

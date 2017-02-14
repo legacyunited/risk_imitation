@@ -35,13 +35,27 @@ def new_game():
 	if request.method == "GET":
 		return render_template("new_game.html")
 
-	'''if request.method == "POST":
-		if new_game_input_is_good(request.form):
-			game = [request.form["user_name"],request.form["user_password"],request.form["number_of_players"], request.form["number_of_user_players"], request.form["name_of_game_owner"]]
-			game.setup_game()
-			return home(game)
-		else:
-			return render_template("new_game.html", request.form)'''
+	if request.method == "POST":
+		users = [session["user"]]
+		i = 2;
+		num = int(request.form["num"]) + 1
+		print('leh')
+
+		while (i < num):
+			print("meh")
+			user = "user" + str(i)
+			if (request.form[user] != session["user"]):
+				if (search_users(request.form[user], request.form[(user+"_password")])):
+					users.append(request.form[user])
+				else:
+					flash("Username/password combo didn't match! " + request.form[user] +"  " + request.form[(user+"_password")])
+					return redirect(url_for('new_game'))
+			else:
+				flash("You cannot play against yourself!")
+				return redirect(url_for('new_game'))
+
+			flash("success")
+			return redirect(url_for('new_game'))
 
 
 @app.route('/log_in/', methods=["POST", "GET"])
