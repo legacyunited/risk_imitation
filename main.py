@@ -47,15 +47,22 @@ def new_game():
 				if (search_users(request.form[user], request.form[(user+"_password")])):
 					users.append(request.form[user])
 				else:
-					flash("Username "+str(i) + "and password combo not found!")
+					flash("Username and password combo not found!")
 					return redirect(url_for('new_game'))
 			else:
 				flash("You cannot play against yourself!")
 				return redirect(url_for('new_game'))
 			i += 1
 
-		flash("success")
-		return redirect(url_for('new_game'))
+		#if less than four players are playing, add some None type players to the users array
+		while len(users) < 4:
+			users.append(None)
+
+		#Setup game
+		game = Game(users)
+		game.setup_game()
+
+		return home(game)
 
 
 @app.route('/log_in/', methods=["POST", "GET"])

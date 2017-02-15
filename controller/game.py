@@ -16,6 +16,13 @@ class Game:
 		for each in users:
 			self.players.append(Player(each))
 
+		#number of actually playing players
+		self.number_of_players = 0
+		for each in self.players:
+			if each is not None:
+				self.number_of_players += 1
+
+
 		#risk_cards_claimed variable helps us to determine the number of RISK troops to distribute in give_risk_troops
 		self.risk_cards_claimed = 0
 
@@ -64,16 +71,15 @@ class Game:
 		con = lite.connect("./model/data.db")
 
 		with con:
-			#Returns queries as a dictionary
-			con.row_factory = lite.Row
+			c = con.cursor()
 
-			con.execute("INSERT INTO Games (player1, player2, player3, player4, won_by) VALUES (?, ?, ?, ?, ?)", user[0], user[1], user[2], user[3], self.won)
-			self.game_id = con.lastrowid
+			c.execute("INSERT INTO Games (player_1, player_2, player_3, player_4, won_by) VALUES (?, ?, ?, ?, ?)", (self.players[0].name, self.players[1].name, self.players[2].name, self.players[3].name, self.won))
+			self.game_id = c.lastrowid
 
-			con.execute("INSERT INTO Game (game_id, turn, risk_cards_claimed, player_1_cards, player_2_cards, player_3_cards, player_4_cards) VALUES (?, ?, ?, ?, ?, ?, ?)", game_id, self.current_player, self.risk_cards_claimed, self.players[0].RISK_cards, self.players[1].RISK_cards, self.players[2].RISK_cards, self.players[3].RISK_cards)
+			c.execute("INSERT INTO Game (game_id, turn, risk_cards_claimed, player_1_cards, player_2_cards, player_3_cards, player_4_cards) VALUES (?, ?, ?, ?, ?, ?, ?)", (self.game_id, self.current_player, self.risk_cards_claimed, self.players[0].RISK_cards, self.players[1].RISK_cards, self.players[2].RISK_cards, self.players[3].RISK_cards))
 			
 			for each in self.countries:
-				con.execute("INSERT INTO Countries (game_id, name, owned_by, troops) VALUES (?, ?, ?, ?)", game_id, each.name, each.owned_by, each.troops)
+				c.execute("INSERT INTO Countries (game_id, name, owned_by, troops) VALUES (?, ?, ?, ?)", (self.game_id, each.name, each.owned_by, each.troops))
 
 
 
@@ -82,13 +88,12 @@ class Game:
 		con = lite.connect("./model/data.db")
 
 		with con:
-			#Returns queries as a dictionary
-			con.row_factory = lite.Row
+			c = con.cursor()
 
-			con.execute("UPDATE Game SET turn = ?, risk_cards_claimed = ?, player_1_cards = ?, player_2_cards = ?, player_3_cards = ?, player_4_cards = ? WHERE game_id = ? ", self.current_player, self.risk_cards_claimed, self.players[0].RISK_cards, self.players[1].RISK_cards, self.players[2].RISK_cards, self.players[3].RISK_cards, game_id)
+			c.execute("UPDATE Game SET turn = ?, risk_cards_claimed = ?, player_1_cards = ?, player_2_cards = ?, player_3_cards = ?, player_4_cards = ? WHERE game_id = ? ", (self.current_player, self.risk_cards_claimed, self.players[0].RISK_cards, self.players[1].RISK_cards, self.players[2].RISK_cards, self.players[3].RISK_cards, self.game_id))
 			
 			for each in self.countries:
-				con.execute("UPDATE Countries SET name = ?, owned_by = ?, troops = ? WHERE game_id = ?", each.name, each.owned_by, each.troops, game_id)
+				c.execute("UPDATE Countries SET name = ?, owned_by = ?, troops = ? WHERE game_id = ?", (each.name, each.owned_by, each.troops, self.game_id))
 
 
 

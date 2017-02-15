@@ -4,16 +4,12 @@ class Player:
 		self.player_num = 1
 
 		if username is None:
-			self.username=None
+			self.name=None
 			self.player_num=None
 			self.RISK_cards = 0
 			
 		else:
-			#The players identifier AND the order they play in
-			self.player_num = player_num
-			self.player_num += 1
-
-			self.username = username
+			self.name = username
 			
 			self.RISK_cards = 0
 
