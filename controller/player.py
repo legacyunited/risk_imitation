@@ -1,13 +1,22 @@
 class Player:
 
-	def __init__(self, is_user_player, player_num):
-		#True if player is a user instead of an AI
-		self.is_user_player = is_user_player
+	def __init__(self, username):
+		self.player_num = 1
 
-		#The players identifier AND the order they play in
-		self.player_num = player_num
-		
-		self.RISK_cards = 0
+		if username is None:
+			self.username=None
+			self.player_num=None
+			self.RISK_cards = 0
+			
+		else:
+			#The players identifier AND the order they play in
+			self.player_num = player_num
+			self.player_num += 1
+
+			self.username = username
+			
+			self.RISK_cards = 0
+
 
 	def check_if_play_owns_area(self, area):
 		player_owns_country = []
