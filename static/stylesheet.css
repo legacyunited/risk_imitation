@@ -35,6 +35,17 @@ button {
 }
 
 
+/* Distinguish on map between countires owned by different players */
+
+.one {
+	color: blue;
+}
+
+.two {
+	color: red;
+}
+
+
 /* Log in and new user page */
 
 .log_in {

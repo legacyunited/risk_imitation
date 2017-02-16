@@ -21,10 +21,7 @@ def home():
 		return render_template("map.html", countries=result)
 
 	else:
-		game = Game(4, 1, "Fred")
-		game.setup_game()
-
-		return render_template("map.html", countries=game.countries)
+		return render_template("map.html")
 		
 def home(game):
 	return render_template("map.html", countries=game.countries)

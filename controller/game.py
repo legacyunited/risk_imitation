@@ -2,6 +2,7 @@ import random
 from controller.player import Player
 from controller.country import Country
 import sqlite3 as lite
+import inflect
 
 
 class Game:
@@ -13,15 +14,11 @@ class Game:
 		#players variables contains all the players in the game, but also holds null players if not all four are playing.
 		#sorry, I already modelled the database that way :P
 		self.players = []
-		for each in users:
-			self.players.append(Player(each))
-
-		#number of actually playing players
 		self.number_of_players = 0
-		for each in self.players:
+		for each in users:
 			if each is not None:
 				self.number_of_players += 1
-
+			self.players.append(Player(each, self.number_of_players))
 
 		#risk_cards_claimed variable helps us to determine the number of RISK troops to distribute in give_risk_troops
 		self.risk_cards_claimed = 0
@@ -52,19 +49,24 @@ class Game:
 			for line in file:
 				country = line.rstrip()
 				self.countries.append(Country(country))
-
+		
 
 		#assigns each player to a random country
-		#kind of twisty logic. Change to circular linked list?
-		current_player = 0
-		for country in self.countries:
-			if current_player == (self.number_of_players - 1):
-				current_player = 0
-			country.owned_by = current_player
+		#Converts player num to words (just a '1', for example, is invalid css)
+		inflect_engine = inflect.engine()
+		current_player = 1
+		countries = self.countries
+		random.shuffle(countries)
+		for country in countries:
 
+			if (current_player > self.number_of_players):
+				current_player = 1
+
+			country.owned_by = inflect_engine.number_to_words(current_player)
 			current_player += 1
 
-		self.current_player = random.randint(0, self.number_of_players)
+		#Current player marks whoever's turn it is
+		self.current_player = random.randint(1, self.number_of_players)
 
 
 		#Inserts everything into the database for the first time.

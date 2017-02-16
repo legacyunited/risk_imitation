@@ -1,7 +1,8 @@
+import inflect
+
 class Player:
 
-	def __init__(self, username):
-		self.player_num = 1
+	def __init__(self, username, num):
 
 		if username is None:
 			self.name=None
@@ -10,8 +11,12 @@ class Player:
 			
 		else:
 			self.name = username
-			
 			self.RISK_cards = 0
+
+			#Converts player num to words (just a '1', for example, is invalid css)
+			inflect_engine = inflect.engine()
+			self.id = inflect_engine.number_to_words(num)
+
 
 
 	def check_if_play_owns_area(self, area):

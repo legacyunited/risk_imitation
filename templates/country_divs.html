@@ -1,3 +1,5 @@
-{% for country in countries %}
-	<div class="{{country.name}}"><p>{{country.troops}}</p></div>
-{% endfor %}
+{% if countries %}
+	{% for country in countries %}
+		<div id="{{country.name}}" class="{{country.owned_by}}"><p>{{country.troops}}</p></div>
+	{% endfor %}
+{% endif %}
