@@ -1,6 +1,7 @@
 from flask import *
 from random import random
 from controller.game import Game
+from controller.country import Country
 import sqlite3 as lite
 
 
@@ -8,24 +9,16 @@ app = Flask(__name__)
 app.debug = True
 
 @app.route('/')
+@app.route('/index/')
 def home():
-	logged_in = True #True for debugging
-	
-	if not logged_in:
-		result = []
-		with open("countries.txt", "r") as file:
-			for line in file:
-				country = line.rstrip()
-				result.append(Country(country, 0))
-
-		return render_template("map.html", countries=result)
+	if session["game_id"]:
+		game_info = retrieve_game(int(session["game_id"]))
+		
+		return render_template("map.html", countries=game_info[2])
 
 	else:
 		return render_template("map.html")
 		
-def home(game):
-	return render_template("map.html", countries=game.countries)
-
 
 @app.route('/new_game/', methods=["POST", "GET"])
 def new_game():
@@ -58,8 +51,9 @@ def new_game():
 		#Setup game
 		game = Game(users)
 		game.setup_game()
+		session["game_id"] = game.game_id
 
-		return home(game)
+		return redirect("/")
 
 
 @app.route('/log_in/', methods=["POST", "GET"])
@@ -163,5 +157,40 @@ def find_if_username_taken(username):
 
 		#If none are found, return False
 		return False
+
+
+def retrieve_game(game_id):
+	con = lite.connect("./model/data.db")
+
+	with con:
+		cur = con.cursor()
+
+		info = con.execute("SELECT * FROM Game WHERE game_id = ?", (game_id,))
+		info = info.fetchall()
+		players = con.execute("SELECT * FROM Games WHERE game_id = ?", (game_id,))
+		players = players.fetchall()
+		countries = con.execute("SELECT * FROM Countries WHERE game_id = ?", (game_id,))
+		countries = countries.fetchall()
+
+	game = {}
+	games = []
+	games.append(players[0][1])
+	games.append(players[0][2])
+	games.append(players[0][3])
+	games.append(players[0][4])
+	games.append(players[0][5])
+
+	game["turn"] = int(info[0][1])
+	game["risk_cards_claimed"] = info[0][2]
+	game["player_1_cards"] = info[0][3]
+	game["player_2_cards"] = info[0][4]
+	game["player_3_cards"] = info[0][5]
+	game["player_4_cards"] = info[0][6]
+
+	country_container = []
+	for country in countries:
+		country_container.append(Country(country[1], country[2], country[3]))
+
+	return [games, game, country_container]
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

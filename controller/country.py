@@ -20,6 +20,11 @@ class Country:
 		self.name = country
 		self.troops = 0
 
+	def __init__(self, country, owned_by, troops):
+		self.name = country
+		self.troops = troops
+		self.owned_by = owned_by
+
 
 	def attack(self, defending_country):
 		def roll(number_of_rolls):

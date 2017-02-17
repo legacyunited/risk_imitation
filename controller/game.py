@@ -48,7 +48,7 @@ class Game:
 		with open("countries.txt", "r") as file:
 			for line in file:
 				country = line.rstrip()
-				self.countries.append(Country(country))
+				self.countries.append(Country(country, "", random.randint(1, 6)))
 		
 
 		#assigns each player to a random country
