@@ -1,5 +1,5 @@
 {% if countries %}
 	{% for country in countries %}
-		<div id="{{country.name}}" class="{{country.owned_by}}"><p>{{country.troops}}</p></div>
+		<div id="{{country.name}}" class="{{country.owned_by}}" onclick="select_country('{{country.name}}', '{{turn}}', '{{country.owned_by}}')" style="cursor: pointer;"><p>{{country.troops}}</p></div>
 	{% endfor %}
 {% endif %}

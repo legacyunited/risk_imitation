@@ -1,3 +1,9 @@
+/* In RISK, you can only attack the countries
+that are adjacent to the one you are attacking from.
+
+This was the most tedious thing I've done. Except 
+the CSS positioning. */
+
 function adjacent_to(curr, attacking) {
 	if (curr.equals("afganistan")) {
 		if (
@@ -71,7 +77,7 @@ function adjacent_to(curr, attacking) {
 	else if (curr.equals("delhi")) {
 		if (
 			attacking.equals("rajasthan") ||
-			attacking.equals("orissa") ||
+			attacking.equals("orissa")
 			){return(true);}
 		else{
 			return(false); 

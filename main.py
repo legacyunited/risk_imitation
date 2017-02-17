@@ -3,6 +3,7 @@ from random import random
 from controller.game import Game
 from controller.country import Country
 import sqlite3 as lite
+import inflect
 
 
 app = Flask(__name__)
@@ -14,7 +15,7 @@ def home():
 	if session["game_id"]:
 		game_info = retrieve_game(int(session["game_id"]))
 		
-		return render_template("map.html", countries=game_info[2])
+		return render_template("map.html", countries=game_info[2], turn=str(game_info[1]["turn"]))
 
 	else:
 		return render_template("map.html")
@@ -180,7 +181,9 @@ def retrieve_game(game_id):
 	games.append(players[0][4])
 	games.append(players[0][5])
 
-	game["turn"] = int(info[0][1])
+	engine = inflect.engine()
+
+	game["turn"] = engine.number_to_words(int(info[0][1]))
 	game["risk_cards_claimed"] = info[0][2]
 	game["player_1_cards"] = info[0][3]
 	game["player_2_cards"] = info[0][4]
