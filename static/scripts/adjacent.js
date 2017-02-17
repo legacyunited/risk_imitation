@@ -1,5 +1,5 @@
-function adjacent_to(curr, attacking){return(true);}
-	if (curr.equals("afganistan")){return(true);}
+function adjacent_to(curr, attacking) {
+	if (curr.equals("afganistan")) {
 		if (
 			attacking.equals("iran") ||
 			attacking.equals("pakistan") ||
@@ -13,7 +13,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("bangladesh")){return(true);}
+	else if (curr.equals("bangladesh")) {
 		if (
 			attacking.equals("burma") ||
 			attacking.equals("orissa") ||
@@ -24,7 +24,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("bhutan")){return(true);}
+	else if (curr.equals("bhutan")) {
 		if (
 			attacking.equals("tibet") ||
 			attacking.equals("northeast_india")
@@ -34,7 +34,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("burma")){return(true);}
+	else if (curr.equals("burma")) {
 		if (
 			attacking.equals("thailand") ||
 			attacking.equals("bangladesh") ||
@@ -47,7 +47,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("cambodia")){return(true);}
+	else if (curr.equals("cambodia")) {
 		if (
 			attacking.equals("thailand") ||
 			attacking.equals("laos") ||
@@ -58,7 +58,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("central_stans")){return(true);}
+	else if (curr.equals("central_stans")) {
 		if (
 			attacking.equals("turkey") ||
 			attacking.equals("iran")
@@ -68,7 +68,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("delhi")){return(true);}
+	else if (curr.equals("delhi")) {
 		if (
 			attacking.equals("rajasthan") ||
 			attacking.equals("orissa") ||
@@ -78,7 +78,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("east_central_siberia")){return(true);}
+	else if (curr.equals("east_central_siberia")) {
 		if (
 			attacking.equals("mongolia") ||
 			attacking.equals("east_siberia") ||
@@ -89,7 +89,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("east_indonesia")){return(true);}
+	else if (curr.equals("east_indonesia")) {
 		if (
 			attacking.equals("west_indonesia")
 			){return(true);}
@@ -98,7 +98,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("east_siberia")){return(true);}
+	else if (curr.equals("east_siberia")) {
 		if (
 			attacking.equals("east_central_siberia") ||
 			attacking.equals("northeast_china") ||
@@ -110,7 +110,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("hong_kong")){return(true);}
+	else if (curr.equals("hong_kong")) {
 		if (
 			attacking.equals("south_china") ||
 			attacking.equals("taiwan")
@@ -120,7 +120,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("iran")){return(true);}
+	else if (curr.equals("iran")) {
 		if (
 			attacking.equals("iraq") ||
 			attacking.equals("central_stans") ||
@@ -133,7 +133,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("iraq")){return(true);}
+	else if (curr.equals("iraq")) {
 		if (
 			attacking.equals("saudi_arabia") ||
 			attacking.equals("iran") ||
@@ -145,7 +145,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("israel_palestine")){return(true);}
+	else if (curr.equals("israel_palestine")) {
 		if (
 			attacking.equals("jordan") ||
 			attacking.equals("syria")
@@ -155,7 +155,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("jammu_kashmir")){return(true);}
+	else if (curr.equals("jammu_kashmir")) {
 		if (
 			attacking.equals("tibet") ||
 			attacking.equals("rajasthan") ||
@@ -166,7 +166,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("jordan")){return(true);}
+	else if (curr.equals("jordan")) {
 		if (
 			attacking.equals("israel_palestine") ||
 			attacking.equals("syria") ||
@@ -177,7 +177,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("kazakhstan")){return(true);}
+	else if (curr.equals("kazakhstan")) {
 		if (
 			attacking.equals("turmenistan") ||
 			attacking.equals("uzbekistan") ||
@@ -191,7 +191,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("kuwait")){return(true);}
+	else if (curr.equals("kuwait")) {
 		if (
 			attacking.equals("saudi_arabia") ||
 			attacking.equals("uae")
@@ -201,7 +201,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("laos")){return(true);}
+	else if (curr.equals("laos")) {
 		if (
 			attacking.equals("burma") ||
 			attacking.equals("thailand") ||
@@ -214,7 +214,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("mainland_japan")){return(true);}
+	else if (curr.equals("mainland_japan")) {
 		if (
 			attacking.equals("north_japan") ||
 			attacking.equals("okinawa")
@@ -224,7 +224,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("malysia")){return(true);}
+	else if (curr.equals("malysia")) {
 		if (
 			attacking.equals("west_indonesia") ||
 			attacking.equals("philippines") ||
@@ -235,7 +235,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("mongolia")){return(true);}
+	else if (curr.equals("mongolia")) {
 		if (
 			attacking.equals("northwest_china") ||
 			attacking.equals("northeast_china") ||
@@ -248,7 +248,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("mumbai")){return(true);}
+	else if (curr.equals("mumbai")) {
 		if (
 			attacking.equals("south_india") ||
 			attacking.equals("rajasthan")
@@ -258,7 +258,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("nepal")){return(true);}
+	else if (curr.equals("nepal")) {
 		if (
 			attacking.equals("rajasthan") ||
 			attacking.equals("orissa") ||
@@ -270,7 +270,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("north_china")){return(true);}
+	else if (curr.equals("north_china")) {
 		if (
 			attacking.equals("tibet") ||
 			attacking.equals("northwest_china") ||
@@ -284,7 +284,7 @@ function adjacent_to(curr, attacking){return(true);}
 		}
 	}
 
-	else if (curr.equals("north_japan")){return(true);}
+	else if (curr.equals("north_japan")) {
 		if (
 			attacking.equals("mainland_japan") ||
 			attacking.equals("east_siberia") 
@@ -309,7 +309,7 @@ function adjacent_to(curr, attacking){return(true);}
 		else {
 			return(false); 
 		}
-	
+	}
 
 	else if (curr.equals("northeast_india")) {
 		if (
@@ -325,7 +325,7 @@ function adjacent_to(curr, attacking){return(true);}
 		else{
 			return(false); 
 		}
-	
+	}
 
 	else if (curr.equals("northwest_china")) {
 		if (
@@ -703,3 +703,4 @@ function adjacent_to(curr, attacking){return(true);}
 			return(false);
 		}
 	}
+}
