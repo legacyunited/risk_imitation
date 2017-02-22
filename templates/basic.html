@@ -5,6 +5,11 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css')}}">
 		<!-- Stylesheet to tell browser how to position countries -->
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='country_positioning.css')}}">
+
+		<!-- Declares a root for AJAX -->
+		<script type=text/javascript>
+		 	var SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
 	</head>
 	<body>
 		<!-- Gets flashed messeges, displays in javascript alert -->

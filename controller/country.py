@@ -16,62 +16,8 @@ class Country:
 		"central asia": 6
 	}
 
-	def __init__(self, country):
-		self.name = country
-		self.troops = 0
 
 	def __init__(self, country, owned_by, troops):
 		self.name = country
 		self.troops = troops
 		self.owned_by = owned_by
-
-
-	def attack(self, defending_country):
-		def roll(number_of_rolls):
-			highest = []
-			for roll in range(number_of_rolls):
-					value = Game.roll_die()
-
-					highest.append(defensive_value)
-
-			while len(highest) <= 3:
-				highest.append(0)
-
-			return sorted(highest)
-
-		def list_of_rules_from_high_to_low(type_of_attack):
-			if type_of_attack=="defensive":
-				if defending_country.troops >= 3:
-					roll(3)
-				elif defending_country.troops == 2:
-					roll(2)
-				else:
-					roll(1)
-
-			if type_of_attack=="offensive":
-				if defending_country.troops >= 4:
-					roll(3)
-				elif defending_country.troops == 3:
-					roll(2)
-				elif defending_country.troops == 2:
-					roll(1)
-
-
-		while self.troops > 1 and defending_country.troops > 0:
-			defense = list_of_rolls_from_high_to_low("defensive")
-			offense = list_of_rolls_from_high_to_low("offensive")
-
-
-			for each in range(3):
-				if offense > defense:
-					defending_country.troops -= 1
-				elif defense > offense:
-					self.troops -= 1
-
-		if defending_country.troops == 0:
-			defending_country.owned_by(self.owned_by)
-			Game.successful_attack = True
-			for troop in offense:
-				if troop != 0:
-					self.troops -= 1
-					defending_country += 1

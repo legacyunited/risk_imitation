@@ -1,9 +1,10 @@
 from flask import *
-from random import random
+import random
 from controller.game import Game
 from controller.country import Country
 import sqlite3 as lite
 import inflect
+from flask_debugtoolbar import DebugToolbarExtension
 
 
 app = Flask(__name__)
@@ -118,6 +119,14 @@ def log_out():
 
 
 
+@app.route('/attack/', methods=["POST"])
+def process_attack():
+	result_of_attack = attack(int(request.get_json()["attacking_troops"]), int(request.get_json()["defending_troops"]))
+
+	print(result_of_attack)
+	return jsonify(result_of_attack)
+
+
 
 #searches database for users which are passed, returns tuple (if found username/password, current game if found), else returns false
 def search_users(username, password):
@@ -196,4 +205,69 @@ def retrieve_game(game_id):
 
 	return [games, game, country_container]
 
+
+
+def attack(attacking_troops, defending_troops):
+	def roll(number_of_rolls):
+		highest = []
+		for roll in range(number_of_rolls):
+				value = random.randint(1, 6)
+
+				highest.append(value)
+
+		while len(highest) < 3:
+			highest.append(0)
+
+		highest.sort()
+		highest.reverse()
+		return highest
+
+	def list_of_rolls_from_high_to_low(type_of_attack):
+		if type_of_attack=="defensive":
+			if defending_troops >= 3:
+				return roll(3)
+			elif defending_troops == 2:
+				return roll(2)
+			else:
+				return roll(1)
+
+		if type_of_attack=="offensive":
+			if attacking_troops >= 4:
+				return roll(3)
+			elif attacking_troops == 3:
+				return roll(2)
+			elif attacking_troops == 2:
+				return roll(1)
+
+
+
+	while attacking_troops > 1 and defending_troops > 0:
+		defense = list_of_rolls_from_high_to_low("defensive")
+		offense = list_of_rolls_from_high_to_low("offensive")
+
+		i = 0
+		while attacking_troops > 1 and i < 3:
+			if offense[i] > defense[i]:
+				defending_troops -= 1
+			elif defense[i] > offense[i]:
+				attacking_troops -= 1
+			i += 1
+
+	if defending_troops <= 0:
+		return {"successful": True, "attacking_country_troops": attacking_troops, "defending_country_troops": 1}
+
+	else:
+		return {"successful": False, "attacking_country_troops": attacking_troops, "defending_country_troops": defending_troops}
+
+
+
+
+
+
+
+
+
+
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+
+toolbar = DebugToolbarExtension(app)

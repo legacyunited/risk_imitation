@@ -98,4 +98,3 @@ class Game:
 				c.execute("UPDATE Countries SET name = ?, owned_by = ?, troops = ? WHERE game_id = ?", (each.name, each.owned_by, each.troops, self.game_id))
 
 
-
